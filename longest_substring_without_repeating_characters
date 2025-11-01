@@ -1,0 +1,54 @@
+'''
+3. Longest Substring Without Repeating Characters
+
+Given a string s, find the length of the longest substring without duplicate characters.
+
+#Approach
+#Brute force(if Appliable):
+#Create two variables for an attempt and the actual longest
+#Make two loops, one checking for first index of the string and the second to find the longest 
+#Create an array for each letter and add a new letter each time we continue down the string
+#After the second loop finishes, check the length and record it
+#Reset the second variable and the repeated array
+
+#Optimize Approach
+#Create a two pointer, left and right
+#Make a sliding window that stretches each time we go down the string
+#Every iteration should increase r by one, while adding a new varaible to repeated
+#If a new variable is found, l will move to the highest variable of repeated in order to find a new starting point
+
+'''
+
+
+
+def lengthOfLongestSubstring(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    if len(s)==1:
+        return 1
+    repeated = {}
+    left = 0
+    right = 0
+    wordLength = len(s)
+    longest = 0
+
+    while(right < wordLength):
+
+        if s[right] in repeated:
+            #Sets l to the highest index listed in the repeated
+            left = max(left,repeated[s[right]]+1)
+
+        length = right - left + 1
+        longest = max(longest,length)
+
+        #Adds a new letter as well as the index of the letter to the repeated list
+        repeated[s[right]]=right
+        right+=1
+
+    return longest
+
+s = "abcabcbb"
+
+print(lengthOfLongestSubstring(s))
