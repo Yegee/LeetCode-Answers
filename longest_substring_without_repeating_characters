@@ -48,7 +48,3 @@ def lengthOfLongestSubstring(s):
         right+=1
 
     return longest
-
-s = "abcabcbb"
-
-print(lengthOfLongestSubstring(s))
