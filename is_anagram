@@ -1,0 +1,18 @@
+def isAnagram(s: str, t: str) -> bool:
+        s_hash = {}
+        t_hash = {}
+
+        if len(s) != len(t):
+              return False
+
+        for i in s:
+            s_hash.setdefault(i, 0)
+            s_hash[i] += 1
+            
+            
+        return s_hash == t_hash
+
+s = "racecar"
+t = "carrace"
+
+print(isAnagram(s,t))
