@@ -1,3 +1,22 @@
+'''
+
+Group Anagrams
+
+Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
+
+An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
+
+Brute Force:
+Create loop where it will check each letter in the word if it matches. If there is a match, add it to the group. If not, create a new one
+
+Real Solution:
+Create a hashmap that will save all of the anagrams. Then create set the values to each anagram into the word in the list.
+Each iteration should search in the hashmap if there is a hash with the same letters and append it to the value, which is a list. 
+After the iterations of the list are finish, return all of the values of the anagrams as a list, which should be each arrays of the words that are anagrams
+
+'''
+
+
 def groupAnagrams(strs):
     anagrams = {}
 
@@ -16,7 +35,3 @@ def groupAnagrams(strs):
 
     return list(anagrams.values())
 
-
-strs = ["act","pots","tops","cat","stop","hat"]
-
-print(groupAnagrams(strs))
