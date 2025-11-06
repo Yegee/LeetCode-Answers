@@ -1,19 +1,20 @@
 def groupAnagrams(strs):
-    groups = {}
+    anagrams = {}
 
     for word in strs:
         hash_map = {}
         for ch in word:
             hash_map[ch] = hash_map.get(ch, 0) + 1
 
+        #Tuple, used to make it hashable and comparable
         key = tuple(sorted(hash_map.items()))
 
-        if key in groups:
-            groups[key].append(word)
+        if key in anagrams:
+            anagrams[key].append(word)
         else:
-            groups[key] = [word]
+            anagrams[key] = [word]
 
-    return list(groups.values())
+    return list(anagrams.values())
 
 
 strs = ["act","pots","tops","cat","stop","hat"]
