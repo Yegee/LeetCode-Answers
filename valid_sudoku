@@ -1,0 +1,79 @@
+def isValidSudoku(board: List[List[str]]) -> bool:
+    if checkRows(board) == False:
+        return False
+    elif checkColumns(board) == False:
+        return False
+    
+    for box_row in range(3):
+        for box_col in range(3):
+            seen = set()
+            for r in range(box_row * 3, box_row * 3 + 3):
+                for c in range(box_col * 3, box_col * 3 + 3):
+                    val = board[r][c]
+                    if val == '.':
+                        continue
+                    if val in seen:
+                        return False
+                    seen.add(val)
+    return True
+
+def checkRows(board):
+    for row in range(0,9):
+        seen = set()
+        for column in range(0,9):
+            val = board[row][column]
+            if val == '.':
+                continue
+            if val in seen:
+                return False
+            seen.add(val)
+    return True
+
+def checkColumns(board):
+    for column in range(0,9):
+        seen = set()
+        for row in range(0,9):
+            val = board[row][column]
+            if val == '.':
+                continue
+            if val in seen:
+                return False
+            seen.add(val)
+    return True
+
+
+                
+                # if board[row][column] in hash_box:
+                #     return False
+                # elif board[row][column] != ".":
+                #     hash_box[board[row][column]] = hash_box.get(board[row][column], 0) + 1
+                #     print(board[row][column])
+
+        # test.append(hash_box)
+        # hash_box= {}
+
+            
+
+board = (
+# [["1","2",".",".","3",".",".",".","."],
+# ["4",".",".","5",".",".",".",".","."],
+# [".","9","8",".",".",".",".",".","3"],
+# ["5",".",".",".","6",".",".",".","4"],
+# [".",".",".","8",".","3",".",".","5"],
+# ["7",".",".",".","2",".",".",".","6"],
+# [".",".",".",".",".",".","2",".","."],
+# [".",".",".","4","1","9",".",".","8"],
+# [".",".",".",".","8",".",".","7","9"]]
+
+[["8","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+ )
+
+print(isValidSudoku(board))
