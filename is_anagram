@@ -1,3 +1,16 @@
+'''
+242. Valid Anagram
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+Brute Force:
+Itergrate and sort the letters. If the words are the same, return True
+
+Optimal:
+Iterate through both words and create two hashmaps. The hashmap will count all the letters
+If both hashmaps are the same, return True. False otherwise
+'''
+
 def isAnagram(self, s: str, t: str) -> bool:
     s_hash = {}
     t_hash = {}

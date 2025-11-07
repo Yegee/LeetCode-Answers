@@ -5,10 +5,13 @@ You are given two non-empty linked lists representing two non-negative integers.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
-#Approach
-#Brute force(if Appliable):
-#Add each individual number one at a time until completed. If number is over 10, subtract it and add 1 to the next number
+Approach
+Brute force(if Appliable):
+Add each individual number one at a time until completed. If number is over 10, subtract it and add 1 to the next number
 
+Optimal Approach
+Create a new list node for the answer. Create a loop that will add to a sum every iteration of a loop. If it is over 10, carry the one and made the base sum the carry of the next loop.
+The key is to make the while loop if go on if there is a node in l1, l2, or a carry node still. 
 
 '''
 
