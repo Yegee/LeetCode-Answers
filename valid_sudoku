@@ -1,3 +1,29 @@
+
+'''
+
+36. Valid Sudoku
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+Each row must contain the digits 1-9 without repetition.
+Each column must contain the digits 1-9 without repetition.
+Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+Note:
+
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+
+Brute Force:
+Use Hashmap and make nested loops to check each box
+We want to create four nested loops, two for each box and two for each row and column of the boxes.
+Add to the hashmap if the number is found and if it is already in the haskmap when we check, it will be invalid
+
+Optimial.
+Similar to how the hashmap does it, but instead use a set() because it is more efficent in checking for duplicates. 
+Sets willl save you space complexity and time since it doesn't need to create a value as well as other duplicates.
+In terms of complexity, it should be O(n^2) no matter what or at least similar since n will be the same no matter what, which is 9x9 or 9 for each box.
+
+'''
+
 def isValidSudoku(board: List[List[str]]) -> bool:
     #Put self. for class in LeetCode/NeetCode
     if checkRows(board) == False:
@@ -18,6 +44,7 @@ def isValidSudoku(board: List[List[str]]) -> bool:
                     seen.add(val)
     return True
 
+#Created sepereate functions for neater code
 def checkRows(board):
     for row in range(0,9):
         seen = set()
