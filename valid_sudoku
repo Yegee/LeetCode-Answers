@@ -1,4 +1,5 @@
 def isValidSudoku(board: List[List[str]]) -> bool:
+    #Put self. for class in LeetCode/NeetCode
     if checkRows(board) == False:
         return False
     elif checkColumns(board) == False:
