@@ -23,7 +23,3 @@ def threeSum(nums):
                 if triplet not in arrays:
                     arrays.append(triplet)    
     return arrays
-
-nums = [-1,0,1,2,-1,-4]
-
-print(threeSum(nums))
