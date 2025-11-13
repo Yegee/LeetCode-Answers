@@ -1,3 +1,20 @@
+'''
+
+125. Valid Palindrome
+
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, 
+it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+Brute Force(If Applicable):
+Create two pointers, one at the left character and right character. 
+Makes each check is lower case and is a letter. If it is a character or space, make the pointer one higher
+If there is a character that isn't the same, return false. Else return True.
+
+'''
+
+
 def isPalindrome(s):
         """
         :type s: str
