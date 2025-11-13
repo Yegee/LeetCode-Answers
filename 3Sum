@@ -1,0 +1,29 @@
+'''
+
+3 Sum
+
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] where nums[i] + nums[j] + nums[k] == 0, and 
+the indices i, j and k are all distinct.
+
+The output should not contain any duplicate triplets. You may return the output and the triplets in any order.
+
+'''
+
+def threeSum(nums):
+    """
+    :type nums: List[int]
+    :rtype: List[List[int]]
+    """
+    arrays = []    
+    for i in range(0, len(nums)-2):
+        for j in range(i+1, len(nums)):
+            sum = nums[i] + nums[j]
+            if (sum in nums) and ((sum != nums[i]) and sum != nums[j]):
+                triplet = sorted([sum, nums[i], nums[j]])
+                if triplet not in arrays:
+                    arrays.append(triplet)    
+    return arrays
+
+nums = [-1,0,1,2,-1,-4]
+
+print(threeSum(nums))
