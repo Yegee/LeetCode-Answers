@@ -1,3 +1,23 @@
+'''
+
+2 Sum
+
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+Brute Force:
+Make a nested for loop. The first loop is the first multiple and the second is the rest of the array.
+Iterate through the entire array one at a time until the target is found. If not, move the first loop over one. Repeat until found
+
+Optimized:
+Make a hashmap with the value and the target sum. Each iteration adds the value and the index of the array to get to the sum in the hash.
+When the number that is needed in a sum is found, it will return the index from the loop then the second index from the loop.
+
+'''
+
 def twoSum(nums, target) :
 
     hash = {}
