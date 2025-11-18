@@ -1,0 +1,20 @@
+def kLengthApart(nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: bool
+    """
+
+    #Last Time 1 was found
+    previous = -1000
+
+    for i, num in enumerate(nums):
+        if num == 1:
+            if i - previous - 1 < k:
+                return False
+            previous = i
+    return True
+
+nums = [0,0,0,0,1,0,0,0,1,0,0,1]
+k = 2
+print(kLengthApart(nums, k))
