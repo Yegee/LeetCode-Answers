@@ -1,0 +1,16 @@
+def isOneBitCharacter(bits):
+    """
+    :type bits: List[int]
+    :rtype: bool
+    """
+    iter = 0
+
+    while iter < len(bits) - 1:
+        if bits[iter] == 1:
+            iter += 2
+        else:
+            iter += 1
+    return iter == len(bits)-1
+
+print(isOneBitCharacter([1,0,0]))
+print(isOneBitCharacter([1,1,1,0]))
