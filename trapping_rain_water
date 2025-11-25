@@ -1,10 +1,46 @@
+'''
+
+Trapping Rain Water
+
+You are given an array of non-negative integers height which represent an elevation map. Each value height[i] represents the height of a bar, which has a width of 1.
+
+Return the maximum area of water that can be trapped between the bars.
+
+Brute force:
+For every index i in the height array, we determine how much water can sit on top of that bar.
+To do this, we scan to the left of i to find the highest bar (left_max), and we scan to the right 
+to find the highest bar (right_max). The water level above index i is the minimum of these two 
+maximums, minus the height at i.
+
+In other words:
+water_at_i = min(left_max, right_max) - height[i]
+
+We repeat this for every index, summing the trapped water. Since we perform a full scan to the
+left and right for each position, this brute-force approach takes O(n²) time.
+
+Optimized:
+Instead of scanning left and right for every index, we use two pointers (one at the left end 
+and one at the right end) and keep track of the highest bars seen so far from both sides 
+(l_max and r_max). At each step, we move the pointer pointing to the shorter bar inward, 
+because the amount of water that can be trapped on that side is limited by the shorter boundary.
+
+If height[l] is less than or equal to height[r], we move the left pointer and calculate how 
+much water can sit on that position using l_max. Otherwise, we move the right pointer and 
+calculate water using r_max.
+
+By updating the running maximums on each side and only moving one pointer per step, we can 
+determine the trapped water in a single pass. This reduces the time complexity to O(n).
+
+
+'''
+
 def trap(height: List[int]) -> int:
     l,r = 0,len(height) - 1
     total = 0
     l_max, r_max = height[l], height[r]
 
 
-    while (r > l) and (l < r):
+    while l < r:
 
         if height[l] > height[r]:
             r -= 1
@@ -13,21 +49,12 @@ def trap(height: List[int]) -> int:
             if (r_max - height[r]) > 0:
                 total += (r_max - height[r])
 
-        elif height[r] > height[l]:
+        elif height[l] <= height[r]:
             l += 1
             if height[l] > l_max:
                 l_max = height[l]
             if (l_max - height[l]) > 0:
                 total += (l_max - height[l])
-            
-
-        
-        else: 
-            r -= 1
-            if height[r] > r_max:
-                r_max = height[r]
-            if (r_max - height[r]) > 0:
-                total += (r_max - height[r])
     
     return total
 
