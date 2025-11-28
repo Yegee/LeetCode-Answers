@@ -3,12 +3,15 @@ def climbStairs(n):
         :type n: int
         :rtype: int
         """
-        steps = []
+        steps = [1,1]
+        if n == 1 or n == 2:
+            return n
+        for stair in range(2,n):
+            steps.append(steps[stair - 2] + steps[stair - 1])
         
-        for stair in range(0,n):
-            for i in range(0,stair):
-                  steps
+        return steps[-1]
+            
 
         
 
-climbStairs(5)
+print(climbStairs(45))
