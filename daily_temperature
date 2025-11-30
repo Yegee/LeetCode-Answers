@@ -1,0 +1,36 @@
+def dailyTemperatures(temperatures: List[int]) -> List[int]:
+    n = len(temperatures)
+    days = [0] * n
+    stack = []   # store indices
+
+    for i in range(n):
+
+        while stack and temperatures[i] > temperatures[stack[-1]]:
+            j = stack.pop()
+            days[j] = i - j
+
+        stack.append(i)
+
+
+    return days
+
+
+temperatures = [30,38,30,36,35,40,28]
+
+dailyTemperatures(temperatures)
+
+
+#O(n^2) Solution
+
+# def dailyTemperatures(temperatures: List[int]) -> List[int]:
+#     stack = []
+#     days = [0 for i in range(len(temperatures))]
+#     for i in range(0, len(temperatures)):
+
+#         for j in range(len(stack)-1, -1, -1):
+#             if temperatures[i] > temperatures[stack[j]]:
+#                 days[stack[j]] = i - stack[j]
+#                 stack.pop(j)
+#         stack.append(i)
+
+#     return days
