@@ -1,0 +1,13 @@
+def carFleet(target: int, position: List[int], speed: List[int]) -> int:
+    fleets = 0
+    cars = list(zip(position, speed))
+    cars.sort(reverse = True)
+    fleets = []
+    for i in cars:
+        fleets.append((target - i[0]) / i[1])
+        if len(fleets) > 1 and fleets[-1] <= fleets[-2]:
+            fleets.pop()
+    
+    return len(fleets)
+
+print(carFleet(12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]))
