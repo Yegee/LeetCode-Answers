@@ -1,0 +1,17 @@
+def searchMatrix(matrix: List[List[int]], target: int) -> bool:
+    if target in matrix[0]:
+        return True
+    if len(matrix) == 1:
+        return False
+
+    result = searchMatrix(matrix[1:], target)
+    if result == False:
+        return False
+    
+    return True
+
+matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]]
+
+target = 10
+
+searchMatrix(matrix, target)
