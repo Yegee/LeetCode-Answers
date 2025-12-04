@@ -1,0 +1,4 @@
+def minEatingSpeed(piles: List[int], h: int) -> int:
+    
+    #Use h as a time to figure out how much hours per section. ie, 6 hours to finish [10,25,23,4] 
+    # is 13 since it will take 1.5 hours to finish the 25 bananna
