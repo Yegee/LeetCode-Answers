@@ -1,3 +1,33 @@
+'''
+84. Largest Rectangle in Histogram
+
+Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
+#Approach
+#Brute force (if Applicable):
+#For every bar, expand left and right while bars are taller or equal
+#Calculate the area using the current bar as the smallest height
+#Track the maximum area found
+#This approach runs in O(n^2) time
+
+#Optimize Approach
+#Use a monotonic increasing stack to store indices
+#The stack keeps bars in increasing height order
+#Loop through all bars, plus one extra iteration to flush the stack
+#Set current_height to 0 at the end to force all remaining bars to be processed
+#If current_height is smaller than the height at the top of the stack:
+#Pop the top index since its rectangle can no longer extend to the right
+#Calculate width using:
+#If stack is not empty: index - stack[-1] - 1
+#If stack is empty: index
+#Compute area = height * width and update max_area
+#Push the current index onto the stack
+#Return the maximum area found
+
+'''
+
+
+
 def largestRectangleArea(heights: List[int]) -> int:
         stack = []
         max_area = 0
