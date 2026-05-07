@@ -1,0 +1,24 @@
+def lengthOfLongestSubstring(s: str) -> int:
+    seen = {}
+    l = 0
+    m_length = 0
+    for i in range(len(s)):
+        #Go down index and check if it is in seen
+        if s[i] not in seen:
+            #If seen, add the index to the seen and check if the max length changed
+            seen[s[i]]= i
+        else:
+            #If seen, push up left index until the next avaiable one 
+            while s[i] in seen:
+                seen.pop(s[l])
+                l += 1
+            seen[s[i]] = i
+        
+        #Check if current string length is larger than previous one
+        if len(seen) >= m_length:
+            m_length = len(seen)
+            
+    return m_length
+
+s="pwwkew"
+print(lengthOfLongestSubstring(s))
