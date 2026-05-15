@@ -1,0 +1,18 @@
+def characterReplacement(s: str, k: int) -> int:
+    hashmap = {}
+    maxLength = 0
+    l = 0
+
+    for i in range(len(s)):
+        hashmap[s[i]] = 1 + hashmap.get(s[i], 0)
+        while (sum(hashmap.values()) - max(hashmap.values())) > k:
+            hashmap[s[l]] -= 1
+            l += 1
+        if sum(hashmap.values()) > maxLength:
+            maxLength = sum(hashmap.values())
+    return maxLength
+
+s = "AAABABB"
+k = 1
+
+print(characterReplacement(s, k))
