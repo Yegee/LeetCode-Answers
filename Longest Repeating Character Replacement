@@ -11,8 +11,3 @@ def characterReplacement(s: str, k: int) -> int:
         if sum(hashmap.values()) > maxLength:
             maxLength = sum(hashmap.values())
     return maxLength
-
-s = "AAABABB"
-k = 1
-
-print(characterReplacement(s, k))
