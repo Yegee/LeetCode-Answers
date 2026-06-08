@@ -1,17 +1,24 @@
 def minWindow(s: str, t: str) -> str:
     hashmapT = {}
     hashmapS = {}
-    l = 0
+    l,r = 0, len(s)-1
+    minl = 0
+
     
 
     for i in t:
-        hashmapT[s[i]] = 1 + hashmapT.get(s[i], 0)
+        hashmapT[i] = 1 + hashmapT.get(i, 0)
 
-    temp = ""
-    min = ""
-    for i in range(s):
+    for i in s:
         if i in hashmapT:
-            min += i
+            hashmapS[i] = 1 + hashmapS.get(i, 0)
+            while hashmapS == hashmapT:
+                if s[l] in hashmapS:
+                    hashmapS[s[l]] -= 1
+                l += 1
+
+
+                         
             
 
 s = "OUZODYXAZV"
