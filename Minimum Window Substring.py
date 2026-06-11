@@ -1,27 +1,49 @@
 def minWindow(s: str, t: str) -> str:
     hashmapT = {}
     hashmapS = {}
-    l,r = 0, len(s)-1
-    minl = 0
+    l= 0
+    winLen = [-1,-1]
 
     
+    if len(s) == 0:
+        return ""
 
     for i in t:
         hashmapT[i] = 1 + hashmapT.get(i, 0)
 
-    for i in s:
-        if i in hashmapT:
-            hashmapS[i] = 1 + hashmapS.get(i, 0)
-            while hashmapS == hashmapT:
+     #Keeps duplicates in check
+    have  = 0
+    need = len(hashmapT)
+
+    for r in range(len(s)):
+        if s[r] in hashmapT:
+            hashmapS[s[r]] = 1 + hashmapS.get(s[r], 0)
+            if hashmapS[s[r]] == hashmapT[s[r]]:
+                have += 1
+                                
+            while have == need:
                 if s[l] in hashmapS:
+                    if ((r - l) < (winLen[1] - winLen[0])) or (winLen[0] == -1):
+                        winLen[1] = r
+                        winLen[0] = l
+
                     hashmapS[s[l]] -= 1
+                
+
+                if s[l] in hashmapT and hashmapS[s[l]] < hashmapT[s[l]]:
+                    have -= 1
                 l += 1
+    
+    if len(s) == 0:
+        return ""
+    else:
+        return s[winLen[0]: winLen[1] + 1]
 
 
-                         
-            
+        
 
-s = "OUZODYXAZV"
-t = "XYZ"
+s = "aa"
+
+t = "aa"
 
 print(minWindow(s, t))
