@@ -11,7 +11,7 @@ def minWindow(s: str, t: str) -> str:
     for i in t:
         hashmapT[i] = 1 + hashmapT.get(i, 0)
 
-     #Keeps duplicates in check
+    #Keeps duplicates in check
     have  = 0
     need = len(hashmapT)
 
@@ -34,10 +34,10 @@ def minWindow(s: str, t: str) -> str:
                     have -= 1
                 l += 1
     
-    if len(s) == 0:
+    if winLen[0] == -1:
         return ""
     else:
-        return s[winLen[0]: winLen[1] + 1]
+        return s[winLen[0]:winLen[1] + 1]
 
 
         

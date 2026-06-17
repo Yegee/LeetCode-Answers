@@ -1,0 +1,21 @@
+def topKFrequent(nums: List[int], k: int) -> List[int]:
+        hash = {}
+        frequent = [[] for i in range(len(nums) + 1)]
+
+        for i in nums:
+            hash[i] = 1 + hash.get(i, 0)
+        
+        for i, j in hash.items():
+            frequent[j].append(i)
+        
+        ans = []
+        for i in frequent[::-1]:
+             for j in i:
+                ans.append(j)
+                if len(ans) == k:
+                    return ans
+                
+
+nums = [55,1,2,2,3,3,3]
+k = 2
+print(topKFrequent(nums, k))
