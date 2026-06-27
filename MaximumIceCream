@@ -1,0 +1,22 @@
+def maxIceCream(costs: List[int], coins: int) -> int:
+    
+    for i in costs:
+        costs[i] = i
+        
+    amount = 0
+
+    for i in costs:
+        coins -= i
+        if coins >= 0:
+            amount += 1
+        else:
+            break
+        
+
+    return amount
+
+costs = [1,3,2,4,1]
+
+coins = 7
+
+print(maxIceCream(costs, coins))

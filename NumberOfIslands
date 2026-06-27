@@ -1,0 +1,18 @@
+def numIslands(self, grid: List[List[str]]) -> int:
+        
+
+        for x in range(len(grid)):
+            if "1" in grid[x]:
+                for y in range(len(grid[x])):
+                    
+        count += 1
+
+        return count
+
+
+grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
