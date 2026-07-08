@@ -12,7 +12,6 @@ def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
         prev = curr
         curr = temp
 
-        0123
         #temp= 1
         #curr= 1
         #prev= 0
