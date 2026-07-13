@@ -1,4 +1,4 @@
-def sumAndMultiply(n: int) -> int:
+def sumAndMultiply(s: str, queries: List[List[int]]) -> List[int]:
     array = []
     while n > .9:
         if n%10 >= 1:
@@ -14,5 +14,5 @@ def sumAndMultiply(n: int) -> int:
     return int(num) * sum
 
 x = 10203004
-
-print(sumAndMultiply(x))
+queries = [[0,7],[1,3],[4,6]]
+print(sumAndMultiply(x, queries))
