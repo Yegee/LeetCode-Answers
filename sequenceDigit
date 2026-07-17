@@ -1,0 +1,36 @@
+def sequentialDigits(low: int, high: int) -> List[int]:
+    arr = [0 for i in range(len(str(low)))]
+
+    for i in range(len(str(low))):
+        arr[i] = int(str(low)[0]) + i
+    
+    new_num = int("".join(map(str, arr)))
+    answer = []
+    if low <= int("".join(map(str, arr))) and not (any(item >= 10 for item in arr)) and (new_num < high):
+        answer.append(int("".join(map(str, arr))))
+
+    while len(answer) == 0 or (answer[-1] < high):
+
+        if 9 in arr:
+            arr.append(0)
+            for i in range(len(arr)):
+                arr[i] = i
+            
+        for x in range(len(arr)):
+            arr[x] += 1
+
+        new_num = int("".join(map(str, arr)))
+
+        if new_num > high:
+            break
+        else:
+            answer.append(int("".join(map(str, arr))))
+
+    return answer
+    
+
+low = 100
+high = 300
+
+
+print(sequentialDigits(low,high))

@@ -1,0 +1,33 @@
+
+def gcdSum(nums: list[int]) -> int:
+    max = 0
+
+
+    def gcd(a,b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
+
+    for i in range(len(nums)):
+        if max < nums[i]:
+            max = nums[i]
+
+        nums[i]=(gcd(nums[i],max))
+
+    nums.sort()
+
+    sum = 0
+    l = 0
+    r = len(nums) - 1
+    while l < r:
+        sum += gcd(nums[l],nums[r])
+        l += 1
+        r -= 1
+
+    return sum
+    
+
+nums = [3,6,2,8]
+
+print(gcdSum(nums))
