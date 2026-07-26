@@ -1,0 +1,14 @@
+def maximumProduct(nums: List[int]) -> int:
+    nums = nums.sort()
+
+    for i in range(len(nums)-2):
+
+        for j in range(i+1,len(nums)):
+
+            for n in range(j+1, len(nums)):
+                ans = max(ans, nums[i]* nums[j] * nums[n])
+
+    return ans
+
+nums = [1,2,3]
+print(maximumProduct(nums))
