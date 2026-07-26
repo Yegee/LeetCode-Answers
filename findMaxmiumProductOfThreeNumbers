@@ -1,14 +1,13 @@
 def maximumProduct(nums: List[int]) -> int:
-    nums = nums.sort()
+    nums.sort()
 
-    for i in range(len(nums)-2):
+    ans1 = nums[len(nums)-1] * nums[len(nums)-2] * nums[len(nums)-3]
+    ans2 = nums[0] * nums[1] * nums[len(nums)-1]
 
-        for j in range(i+1,len(nums)):
-
-            for n in range(j+1, len(nums)):
-                ans = max(ans, nums[i]* nums[j] * nums[n])
-
-    return ans
+    if ans1 >= ans2:
+        return ans1
+    elif ans2 > ans1:
+        return ans2
 
 nums = [1,2,3]
 print(maximumProduct(nums))
